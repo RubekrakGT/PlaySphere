@@ -1,0 +1,20 @@
+{
+"name": "PlaySphere",
+"short_name": "PlSph",
+"start_url": "./index.html",
+"display": "standalone",
+"background_color": "#000000",
+"theme_color": "#1db954",
+"icons": [
+    {
+    "src": "icons/icon-192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+    },
+    {
+    "src": "icons/PlaySphereLogo.png",
+    "sizes": "512x512",
+    "type": "image/png"
+    }
+]
+}

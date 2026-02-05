@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>PlaySphere</title>
+<link rel="icon" href="icons/PlaySphereLogo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+</head>
+
+<body>
+
+<input type="file" id="folderPicker" webkitdirectory multiple hidden>
+
+<!-- TOP LINKS -->
+<div class="topLinks">
+  <span id="openInfo">Información</span>
+  <span id="openHow">Cómo funciona</span>
+</div>
+
+<div class="logo-container">
+    <img id="siteLogo" src="icons/PlaySphereFull.png" alt="Logo de la página">
+</div>
+
+<!-- MODALS -->
+<div class="modal" id="infoModal">
+  <div class="modalBox">
+    <h2>Información</h2>
+    <p>PlaySphere es un reproductor online de musica mp3 (o cualquier archivo de audio)
+        <br>Cabe recalcar que esto es solo un proyecto y sigue en desarrollo (cualquier idea es bienvenida) 
+        <br>En la parte inferior derecha podrás encontrar formas de contactarme y apoyarme a seguir manteniendo esta página
+    </p>
+    <button onclick="closeModals()">Cerrar</button>
+  </div>
+</div>
+
+<div class="modal" id="howModal">
+  <div class="modalBox">
+    <h2>Cómo funciona</h2>
+    <p>Pulsa "Añadir música", seleccionas la carpeta donde tengas tus canciones y la página las añadira automaticamente (y si las tienes separadas en albumes tambien los creará)</p>
+    <button onclick="closeModals()">Cerrar</button>
+  </div>
+</div>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <h1>♫ Tu Biblioteca</h1>
+
+    <button id="addAlbum">＋ Añadir música</button>
+    <button id="randomAlbum">🎲 Álbum aleatorio</button>
+
+    <div id="albumList"></div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+    <h2 id="albumTitle">Selecciona un álbum</h2>
+    <div id="songGrid"></div>
+</main>
+
+<!-- NOW PLAYING -->
+<aside class="nowplaying">
+    <div class="cover-wrapper">
+        <img id="cover">
+        <div id="discPlaceholder">💿</div>
+    </div>
+
+    <h3 id="songTitle">Nada sonando</h3>
+    <p id="artist">—</p>
+
+    <div class="controls">
+        <button id="shuffle" class="icon">🆁</button>
+        <button id="prev" class="icon">⏮</button>
+        <button id="play" class="icon big">▶</button>
+        <button id="next" class="icon">⏭</button>
+    </div>
+
+    <div class="time">
+        <span id="currentTime">0:00</span>
+        <input type="range" id="progress" value="0">
+        <span id="duration">0:00</span>
+    </div>
+
+    <!-- Volume -->
+    <div class="volumeControl">
+        <label for="volume">Volumen:</label>
+        <input type="range" id="volume" min="0" max="100" value="50">
+    </div>
+</aside>
+
+<!-- Watermark  -->
+<div class="watermark">
+    <div class="author">Hecho por RubekrakGT</div>
+    <div class="links">
+
+    <a href="https://www.tiktok.com/@_rubengslgns" target="_blank">
+        <img src="icons/tiktok.png" alt="TikTok">
+    </a>
+
+    <a href="https://www.instagram.com/_larubiags/" target="_blank">
+        <img src="icons/instagram.png" alt="Instagram">
+    </a>
+
+    <a href="https://paypal.me/RbKGT" target="_blank">
+        <img src="icons/paypal.png" alt="Paypal">
+    </a>
+
+    <a href="https://discord.com/users/rubekrakgt" target="_blank">
+        <img src="icons/discord.png" alt="Discord">
+    </a>
+
+    <a href="mailto:anciansnbiki@gmail.com" target="_blank">
+        <img src="icons/gmail.png" alt="Gmail">
+    </a>
+    
+</div>
+</div>
+
+<audio id="audio"></audio>
+
+<script src="script.js"></script>
+
+<!-- disable-devtool -->
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'
+url='https://www.youtube.com/watch?v=dQw4w9WgXcQ' 
+    disable-menu='false' 
+    clear-log='true'
+    disable-copy='true'
+    >
+</script>
+
+</body>
+</html>
