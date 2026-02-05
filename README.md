@@ -1,4 +1,3 @@
-==============================================================================================
 PlaySphere 🎵
 
 PlaySphere is a small experimental web-based music player built using HTML, CSS, and JavaScript
