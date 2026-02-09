@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>PlaySphere</title>
+<link rel="icon" href="icons/PlaySphereLogo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+</head>
+
+<body>
+
+<input type="file" id="folderPicker" webkitdirectory multiple hidden>
+
+<!-- TOP LINKS -->
+<div class="topLinks">
+    <span id="openInfo">Información</span>
+    <span id="openHow">Cómo funciona</span>
+</div>
+
+<div class="logo-container">
+    <img id="siteLogo" src="icons/PlaySphereFull.png" alt="Logo de la página">
+</div>
+
+<!-- MODALS -->
+<div class="modal" id="infoModal">
+    <div class="modalBox">
+        <h2>‿︵‿୨Información୧‿︵‿</h2>
+        <p>PlaySphere es un reproductor online de musica mp3 (o cualquier archivo de audio)</p>
+        <p>Cabe recalcar que esto es solo un proyecto y sigue en desarrollo (cualquier idea es bienvenida)</p>
+        <p>En la parte inferior derecha podrás encontrar formas de contactarme y apoyarme a seguir manteniendo esta página (ദ്ദി˙ᗜ˙)</p>
+        <h2>⚠Aviso⚠</h2>
+        <p><p>Si, soy consciente que en móvil se ve todo muy pequeño (aunque es completamente usable sin problema). Lo mas recomendable sería usar la página en horizontal</p></p>
+    <button onclick="closeModals()">Cerrar</button>
+    </div>
+</div>
+
+<div class="modal" id="howModal">
+    <div class="modalBox">
+    <h2>︵‿୨Cómo funciona୧‿︵</h2>
+    <p>Primero tienes que tener archivos en cualquier formato de audio (mp3,wav,etc...). Lo que yo recomiendo es usar spotdown.org, que permite pasar playlist de spotify a mp3 (aunque ojo, solo deja descargar de 100 canciones en 100, a si que igual te lleva un tiempo</p>
+    <p>Luego pulsa "Añadir música", seleccionas la carpeta donde tengas tus canciones y la página las añadira automaticamente (y si las tienes separadas en albumes tambien los creará)</p>
+    <p>Una vez añadidos los albumes solo tendrás que elegir la canción y ya estará listo para reproducir (además en dispositivos moviles tambien funciona con la pantalla apagada o el explorador minimizado)</p>
+    <p>Como consejo, si quieres usar el reproductor sin conexión en móvil tendrás que ir a los tres puntos de la esquina superior derecha del explorador y pulsar el boton "descargar" (tambien aparece como un icono). Una vez descargado en el explorador de archivos de tu móvil buscas PlaysPhere y ya lo puedes usar sin conexión</p>
+    <p>｡◕‿‿◕｡</p>
+    <button onclick="closeModals()">Cerrar</button>
+</div>
+</div>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <h1>♫ Tu Biblioteca</h1>
+
+    <button id="addAlbum">＋ Añadir música</button>
+    <button id="randomAlbum">🎲 Álbum aleatorio</button>
+
+    <!-- ANUNCIO -->
+
+    <div class="ad-banner">
+        <script>
+  atOptions = {
+    'key' : '1a30854c3a279696e3146ce9b66e4016',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/1a30854c3a279696e3146ce9b66e4016/invoke.js"></script>
+    </div>
+
+    <!-- FIN ANUNCIO-->
+
+    <div id="albumList"></div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+    <h2 id="albumTitle">Selecciona un álbum</h2>
+
+    <!-- ANUNCIO -->
+    <div class="ad-native">
+        <script async="async" data-cfasync="false" src="https://pl28680137.effectivegatecpm.com/da6796fcf587dcbd61349af961831602/invoke.js"></script>
+        <div id="container-da6796fcf587dcbd61349af961831602"></div>
+    </div>
+    <!-- FIN ANUNCIO-->
+
+    <div id="songGrid"></div>
+</main>
+
+<!-- NOW PLAYING -->
+<aside class="nowplaying">
+    <div class="cover-wrapper">
+        <img id="cover">
+        <div id="discPlaceholder">💿</div>
+    </div>
+
+    <h3 id="songTitle">Nada sonando</h3>
+    <p id="artist">—</p>
+
+    <div class="controls">
+        <button id="shuffle" class="icon">🆁</button>
+        <button id="prev" class="icon">⏮</button>
+        <button id="play" class="icon big">▶</button>
+        <button id="next" class="icon">⏭</button>
+    </div>
+
+    <div class="time">
+        <span id="currentTime">0:00</span>
+        <input type="range" id="progress" value="0">
+        <span id="duration">0:00</span>
+    </div>
+
+    <!-- Volume -->
+    <div class="volumeControl">
+        <label for="volume">Volumen:</label>
+        <input type="range" id="volume" min="0" max="100" value="50">
+    </div>
+</aside>
+
+<!-- Watermark  -->
+<div class="watermark">
+    <div class="author">Hecho por RubekrakGT</div>
+    <div class="links">
+
+    <a href="https://www.tiktok.com/@_rubengslgns" target="_blank">
+        <img src="icons/tiktok.png" alt="TikTok">
+    </a>
+
+    <a href="https://www.instagram.com/_larubiags/" target="_blank">
+        <img src="icons/instagram.png" alt="Instagram">
+    </a>
+
+    <a href="https://paypal.me/RbKGT" target="_blank">
+        <img src="icons/paypal.png" alt="Paypal">
+    </a>
+
+    <a href="https://discord.com/users/rubekrakgt" target="_blank">
+        <img src="icons/discord.png" alt="Discord">
+    </a>
+
+    <a href="mailto:anciansnbiki@gmail.com" target="_blank">
+        <img src="icons/gmail.png" alt="Gmail">
+    </a>
+    
+</div>
+</div>
+
+<audio id="audio"></audio>
+
+<script src="script.js"></script>
+
+<!-- ANUNCIO -->
+
+<script src="https://pl28680114.effectivegatecpm.com/be/46/7a/be467aad43fa5bbe5fd055b9f340c0bf.js"></script>
+
+<!-- FIN ANUNCIO-->
+
+<!-- disable-devtool -->
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'
+url='https://www.youtube.com/watch?v=dQw4w9WgXcQ' 
+    disable-menu='false' 
+    clear-log='true'
+    disable-copy='true'
+    >
+</script>
+
+</body>
+</html>
