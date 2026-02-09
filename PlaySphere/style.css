@@ -262,8 +262,6 @@ body {
     filter: brightness(1.3);
 }
 
-/* TOP LINKS MODALS */
-
 .topLinks{
 position:fixed;
 top:10px;
@@ -278,8 +276,6 @@ font-family: "Segoe UI", sans-serif; /* igual que marca de agua */
 cursor:pointer;
 font-weight:bold;
 }
-
-/* MODAL ESTILO MEJORADO */
 
 .modal{
 position:fixed;
@@ -328,4 +324,15 @@ background:#15a347;
 @keyframes fadeIn{
 from{opacity:0; transform:translateY(-20px);}
 to{opacity:1; transform:translateY(0);}
+}
+
+/* MODAL ESTILO MEJORADO */
+.add-banner, .add-native{
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.add-native{
+    margin-bottom: 25px;
 }
