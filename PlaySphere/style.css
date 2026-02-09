@@ -9,11 +9,6 @@ body {
     background: radial-gradient(circle at top, #2a2a2a, #000);
     color: white;
     font-family: "Segoe UI", sans-serif;
-
-    /* QUITAR INSPECCIONAR */
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 .app {
@@ -118,6 +113,16 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.songPlaceholder {
+    height: 120px;
+    background: #222;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
 
 /* NOW PLAYING */
 
@@ -324,4 +329,61 @@ background:#15a347;
 @keyframes fadeIn{
 from{opacity:0; transform:translateY(-20px);}
 to{opacity:1; transform:translateY(0);}
+}
+
+/* BUSCADOR Y ORDEN */
+.song-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.song-controls input {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background: #222;
+    color: white;
+    font-size: 14px;
+}
+
+.song-controls input::placeholder {
+    color: #aaa;
+}
+
+.song-controls select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    background: #222;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+/* SCROLL PERSONALIZADO */
+.main::-webkit-scrollbar,
+#songGrid::-webkit-scrollbar {
+    width: 12px;
+}
+
+.main::-webkit-scrollbar-track,
+#songGrid::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 6px;
+}
+
+.main::-webkit-scrollbar-thumb,
+#songGrid::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 6px;
+    border: 3px solid #111;
+}
+
+.main::-webkit-scrollbar-thumb:hover,
+#songGrid::-webkit-scrollbar-thumb:hover {
+    background: #1ed760;
 }

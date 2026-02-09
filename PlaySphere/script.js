@@ -67,17 +67,35 @@ function loadAlbum(name) {
     card.className = "songCard";
 
     const img = document.createElement("div");
-    img.textContent = "♪"; // <- nota musical negra
-    img.style.fontSize = "32px";
-    img.style.display = "flex";
-    img.style.justifyContent = "center";
-    img.style.alignItems = "center";
-    img.style.height = "120px";
+    img.textContent = "♪";
+    img.className = "songPlaceholder";
 
     const p = document.createElement("p");
     p.textContent = song.name;
 
     card.onclick = () => playSong(i);
+
+    card.appendChild(img);
+    card.appendChild(p);
+    songGrid.appendChild(card);
+  });
+}
+
+function renderAlbumFiltered(list) {
+  songGrid.innerHTML = "";
+
+  list.forEach((song, i) => {
+    const card = document.createElement("div");
+    card.className = "songCard";
+
+    const img = document.createElement("div");
+    img.textContent = "♪";
+    img.className = "songPlaceholder";
+
+    const p = document.createElement("p");
+    p.textContent = song.name;
+
+    card.onclick = () => playSong(currentAlbum.indexOf(song));
 
     card.appendChild(img);
     card.appendChild(p);
@@ -183,3 +201,31 @@ function closeModals(){
 infoModal.style.display="none";
 howModal.style.display="none";
 }
+
+// --- BUSCAR Y ORDENAR CANCIONES ---
+const searchSong = document.getElementById("searchSong");
+const sortSong = document.getElementById("sortSong");
+
+
+// Filtrar por búsqueda
+searchSong.oninput = () => {
+    let filtered = currentAlbum.filter(s => s.name.toLowerCase().includes(searchSong.value.toLowerCase()));
+    
+    // aplicar orden si está seleccionado
+    const order = sortSong.value;
+    if(order === "asc") filtered.sort((a,b) => a.name.localeCompare(b.name));
+    if(order === "desc") filtered.sort((a,b) => b.name.localeCompare(a.name));
+    
+    renderAlbumFiltered(filtered);
+};
+
+// Ordenar
+sortSong.onchange = () => {
+    let filtered = currentAlbum.slice(); // copiar array
+    
+    const order = sortSong.value;
+    if(order === "asc") filtered.sort((a,b) => a.name.localeCompare(b.name));
+    if(order === "desc") filtered.sort((a,b) => b.name.localeCompare(a.name));
+    
+    renderAlbumFiltered(filtered);
+};

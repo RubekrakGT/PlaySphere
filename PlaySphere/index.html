@@ -35,6 +35,9 @@
         <p>En la parte inferior derecha podrás encontrar formas de contactarme y apoyarme a seguir manteniendo esta página (ദ്ദി˙ᗜ˙)</p>
         <h2>⚠Aviso⚠</h2>
         <p><p>Si, soy consciente que en móvil se ve todo muy pequeño (aunque es completamente usable sin problema). Lo mas recomendable sería usar la página en horizontal</p></p>
+        <h2>✎UPDATES✎</h2>
+        <p>Cambios esteticos en la interfaz (cambio en los simbolos de las canciones y en la barra de desplazamiento)</p>
+        <p>Añadidas dos opciones para buscar canciones y ordenarlas de la A a la Z (o al revés)</p>
     <button onclick="closeModals()">Cerrar</button>
     </div>
 </div>
@@ -42,7 +45,7 @@
 <div class="modal" id="howModal">
     <div class="modalBox">
     <h2>︵‿୨Cómo funciona୧‿︵</h2>
-    <p>Primero tienes que tener archivos en cualquier formato de audio (mp3,wav,etc...). Lo que yo recomiendo es usar spotdown.org, que permite pasar playlist de spotify a mp3 (aunque ojo, solo deja descargar de 100 canciones en 100, a si que igual te lleva un tiempo</p>
+    <p>Primero tienes que tener archivos en cualquier formato de audio (mp3,wav,etc...). Lo que yo recomiendo es usar spotdown.org, que permite pasar playlist de spotify a mp3 (aunque ojo, solo deja descargar de 100 canciones en 100, a si que igual te lleva un tiempo)</p>
     <p>Luego pulsa "Añadir música", seleccionas la carpeta donde tengas tus canciones y la página las añadira automaticamente (y si las tienes separadas en albumes tambien los creará)</p>
     <p>Una vez añadidos los albumes solo tendrás que elegir la canción y ya estará listo para reproducir (además en dispositivos moviles tambien funciona con la pantalla apagada o el explorador minimizado)</p>
     <p>Como consejo, si quieres usar el reproductor sin conexión en móvil tendrás que ir a los tres puntos de la esquina superior derecha del explorador y pulsar el boton "descargar" (tambien aparece como un icono). Una vez descargado en el explorador de archivos de tu móvil buscas PlaysPhere y ya lo puedes usar sin conexión</p>
@@ -66,7 +69,14 @@
 <!-- MAIN -->
 <main class="main">
     <h2 id="albumTitle">Selecciona un álbum</h2>
-
+    <div class="song-controls">
+    <input type="text" id="searchSong" placeholder="Buscar canción...">
+    <select id="sortSong">
+        <option value="none">Ordenar</option>
+        <option value="asc">A → Z</option>
+        <option value="desc">Z → A</option>
+    </select>
+</div>
     <div id="songGrid"></div>
 </main>
 
