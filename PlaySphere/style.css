@@ -325,14 +325,3 @@ background:#15a347;
 from{opacity:0; transform:translateY(-20px);}
 to{opacity:1; transform:translateY(0);}
 }
-
-/* MODAL ESTILO MEJORADO */
-.add-banner, .add-native{
-    display: flex;
-    justify-content: center;
-    margin: 15px 0;
-}
-
-.add-native{
-    margin-bottom: 25px;
-}
