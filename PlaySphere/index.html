@@ -5,18 +5,16 @@
 <title>PlaySphere</title>
 <link rel="icon" href="icons/PlaySphereLogo.png" type="image/png">
 <link rel="stylesheet" href="style.css">
-
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+<script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
 </head>
 
 <body>
-
 <input type="file" id="folderPicker" webkitdirectory multiple hidden>
 
-<!-- TOP LINKS -->
 <div class="topLinks">
     <span id="openInfo">Información</span>
     <span id="openHow">Cómo funciona</span>
@@ -26,7 +24,6 @@
     <img id="siteLogo" src="icons/PlaySphereFull.png" alt="Logo de la página">
 </div>
 
-<!-- MODALS -->
 <div class="modal" id="infoModal">
     <div class="modalBox">
         <h2>‿︵‿୨Información୧‿︵‿</h2>
@@ -34,11 +31,10 @@
         <p>Cabe recalcar que esto es solo un proyecto y sigue en desarrollo (cualquier idea es bienvenida)</p>
         <p>En la parte inferior derecha podrás encontrar formas de contactarme y apoyarme a seguir manteniendo esta página (ദ്ദി˙ᗜ˙)</p>
         <h2>⚠Aviso⚠</h2>
-        <p><p>Si, soy consciente que en móvil se ve todo muy pequeño (aunque es completamente usable sin problema). Lo mas recomendable sería usar la página en horizontal</p></p>
+        <p>Si, soy consciente que en móvil se ve todo muy pequeño. Lo mas recomendable sería usar la página en horizontal</p>
         <h2>✎UPDATES✎</h2>
-        <p>Cambios esteticos en la interfaz (cambio en los simbolos de las canciones y en la barra de desplazamiento)</p>
-        <p>Añadidas dos opciones para buscar canciones y ordenarlas de la A a la Z (o al revés)</p>
-    <button onclick="closeModals()">Cerrar</button>
+        <p>Añadido sistema de Jam para escuchar musica con amigos, una cola de reproducción y arregle el modo aleatorio inteligente</p>
+        <button onclick="closeModals()">Cerrar</button>
     </div>
 </div>
 
@@ -55,101 +51,78 @@
 </div>
 
 <div class="app">
-
-<!-- SIDEBAR -->
 <aside class="sidebar">
     <h1>♫ Tu Biblioteca</h1>
-
     <button id="addAlbum">＋ Añadir música</button>
     <button id="randomAlbum">🎲 Álbum aleatorio</button>
+
+    <div class="jam-container" style="border: 1px solid var(--accent); padding: 10px; border-radius: 10px; margin-bottom: 10px;">
+        <h3 style="font-size: 14px; margin-bottom: 10px;">🌐 Jam Session</h3>
+        <div id="jam-setup">
+            <button id="createJam" style="font-size: 12px; padding: 5px;">Crear Sala</button>
+            <div style="display:flex; gap:5px; margin-top:5px;">
+                <input type="text" id="joinId" placeholder="ID..." style="width:70%; background:#222; border:none; color:white; padding:5px; border-radius:4px;">
+                <button id="joinJam" style="width:30%; font-size: 10px; padding:5px;">Unirse</button>
+            </div>
+        </div>
+        <div id="jam-info" style="display:none; font-size: 11px;">
+            ID: <strong id="myIdDisplay"></strong><br>
+            <span style="color:var(--accent)">🟢 Conectado</span>
+        </div>
+    </div>
 
     <div id="albumList"></div>
 </aside>
 
-<!-- MAIN -->
 <main class="main">
     <h2 id="albumTitle">Selecciona un álbum</h2>
     <div class="song-controls">
-    <input type="text" id="searchSong" placeholder="Buscar canción...">
-    <select id="sortSong">
-        <option value="none">Ordenar</option>
-        <option value="asc">A → Z</option>
-        <option value="desc">Z → A</option>
-    </select>
-</div>
+        <input type="text" id="searchSong" placeholder="Buscar canción...">
+        <select id="sortSong">
+            <option value="none">Ordenar</option>
+            <option value="asc">A → Z</option>
+            <option value="desc">Z → A</option>
+        </select>
+    </div>
     <div id="songGrid"></div>
 </main>
 
-<!-- NOW PLAYING -->
 <aside class="nowplaying">
     <div class="cover-wrapper">
         <img id="cover">
         <div id="discPlaceholder">💿</div>
     </div>
-
     <h3 id="songTitle">Nada sonando</h3>
     <p id="artist">—</p>
-
     <div class="controls">
         <button id="shuffle" class="icon">🆁</button>
         <button id="prev" class="icon">⏮</button>
         <button id="play" class="icon big">▶</button>
         <button id="next" class="icon">⏭</button>
     </div>
-
     <div class="time">
         <span id="currentTime">0:00</span>
         <input type="range" id="progress" value="0">
         <span id="duration">0:00</span>
     </div>
-
-    <!-- Volume -->
     <div class="volumeControl">
         <label for="volume">Volumen:</label>
         <input type="range" id="volume" min="0" max="100" value="50">
     </div>
 </aside>
 
-<!-- Watermark  -->
 <div class="watermark">
     <div class="author">Hecho por RubekrakGT</div>
     <div class="links">
-
-    <a href="https://www.tiktok.com/@_rubengslgns" target="_blank">
-        <img src="icons/tiktok.png" alt="TikTok">
-    </a>
-
-    <a href="https://www.instagram.com/_larubiags/" target="_blank">
-        <img src="icons/instagram.png" alt="Instagram">
-    </a>
-
-    <a href="https://paypal.me/RbKGT" target="_blank">
-        <img src="icons/paypal.png" alt="Paypal">
-    </a>
-
-    <a href="https://discord.com/users/rubekrakgt" target="_blank">
-        <img src="icons/discord.png" alt="Discord">
-    </a>
-
-    <a href="mailto:anciansnbiki@gmail.com" target="_blank">
-        <img src="icons/gmail.png" alt="Gmail">
-    </a>
-    
+        <a href="https://www.tiktok.com/@_rubengslgns" target="_blank"><img src="icons/tiktok.png" alt="TikTok"></a>
+        <a href="https://www.instagram.com/_larubiags/" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+        <a href="https://paypal.me/RbKGT" target="_blank"><img src="icons/paypal.png" alt="Paypal"></a>
+        <a href="https://discord.com/users/rubekrakgt" target="_blank"><img src="icons/discord.png" alt="Discord"></a>
+        <a href="mailto:anciansnbiki@gmail.com" target="_blank"><img src="icons/gmail.png" alt="Gmail"></a>
+    </div>
 </div>
 </div>
-
 <audio id="audio"></audio>
-
 <script src="script.js"></script>
-
-<!-- disable-devtool -->
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'
-url='https://www.youtube.com/watch?v=dQw4w9WgXcQ' 
-    disable-menu='false' 
-    clear-log='true'
-    disable-copy='true'
-    >
-</script>
-
 </body>
 </html>
